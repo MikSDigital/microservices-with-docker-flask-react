@@ -27,5 +27,14 @@ def recreate_db():
     db.create_all()
     db.session.commit()
 
+
+@manager.command
+def seed_db():
+    """Seeds the db"""
+    db.session.add(User(username='michael', email="michael@realpython.com"))
+    db.session.add(User(username='michaelherman', email="michael@herman.org"))
+    db.session.commit()
+
+
 if __name__ == '__main__':
     manager.run()
